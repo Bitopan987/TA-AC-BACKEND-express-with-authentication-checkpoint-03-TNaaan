@@ -5,37 +5,34 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var session = require('express-session');
-var MongoStore = require('connect-mongo');
+var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var passport = require('passport');
 
 require('dotenv').config();
+require('./modules/passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var clientRouter = require('./routes/clients');
-// var incomeRouter = require('./routes/income');
-// var expenseRouter = require('./routes/expense');
+var clientRouter = require('./routes/clients');
+var incomeRouter = require('./routes/income');
+var expenseRouter = require('./routes/expense');
+var auth = require('./middlewares/auth');
 
-// Connect with database
 mongoose.connect(
   'mongodb://localhost/ExpenseTracker',
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
-    console.log(err ? err : 'Connected to Databse');
+    console.log('Connected', err ? false : true);
   }
 );
 
-require('./modules/passport');
-
-// Instantiate Express server
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Common Middlewares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -43,27 +40,29 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Add Sessions
-// app.use(
-//   session({
-//     secret: process.env.SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-//   })
-// );
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
 
 app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+app.use(auth.userInfo);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use(auth.loggedInUser);
-// app.use('/clients', clientRouter);
-// app.use('/income', incomeRouter);
-// app.use('/expense', expenseRouter);
+app.use(auth.loggedInUser);
+app.use('/clients', clientRouter);
+app.use('/income', incomeRouter);
+app.use('/expense', expenseRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
