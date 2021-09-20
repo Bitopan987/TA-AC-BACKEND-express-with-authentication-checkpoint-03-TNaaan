@@ -4,7 +4,13 @@
   <div class="container">
     <div class="form">
       <h2>Login</h2>
-
+      <% if(error){ %>
+      <p class="text_error"><%= error %></p>
+      <% } %> <% if(success) { %>
+      <p class="text_success"><%= success %></p>
+      <% } %> <% if(info) { %>
+      <p class="text_success"><%= info %></p>
+      <% } %>
       <div class="oAuth-container">
         <div>
           <a class="oAuth-btn oAuth-btn-google" href="/auth/google">
@@ -32,6 +38,9 @@
         />
         <button type="submit" class="btn btn_sub">Login</button>
       </form>
+    </div>
+    <div class="text-password">
+      <a href="/users/login/forgotpassword">Forgot Password ?</a>
     </div>
   </div>
 </main>

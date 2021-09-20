@@ -27,6 +27,12 @@ body {
       padding: 2rem 0 3rem 0;
     }
   }
+  .text_error {
+    color: red;
+  }
+  .text_success {
+    color: green;
+  }
   header {
     background-color: white;
     box-shadow: 0 1px 3px 0 #9e9b9b1a, 0 1px 2px 0 #a199990f;
@@ -35,10 +41,19 @@ body {
       color: $ternary;
     }
   }
+  .user_name {
+    padding: 0 1rem;
+    color: $ternary;
+    text-transform: uppercase;
+  }
   .flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .flex_1 {
+    display: flex;
+    justify-content: space-between;
   }
   .form {
     max-width: 30rem;
@@ -50,7 +65,7 @@ body {
     border-radius: 7px;
     background-color: white;
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     h2 {
       color: $ternary;
       font-size: 1.4rem;
@@ -70,6 +85,11 @@ body {
     .btn {
       margin-bottom: 1.3rem;
     }
+    .header {
+      padding: 1rem 0;
+      color: green;
+      text-align: left;
+    }
   }
   .file_upload {
     padding: 0.7rem 0 1rem 0;
@@ -80,8 +100,8 @@ body {
   .profile {
     display: inline-block;
     img {
-      width: 4rem;
-      height: 2.5rem;
+      width: 3rem;
+      height: 1.5rem;
       width: 100%;
       vertical-align: bottom;
     }
@@ -142,6 +162,134 @@ body {
       color: #928e8e;
     }
   }
+  .dashboard {
+    padding: 5rem 0;
+    text-align: center;
+    h1 {
+      color: $text;
+      padding-bottom: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: 300;
+    }
+    .profile {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    img {
+      height: 20rem;
+      width: 20rem;
+      border-radius: 50%;
+    }
+
+    span {
+      color: $ternary;
+      padding-left: 0.5rem;
+      text-transform: uppercase;
+    }
+  }
+  .text-password {
+    text-align: center;
+    a {
+      display: inline-block;
+      color: #e95656;
+    }
+  }
+  img {
+    width: 100%;
+  }
+  .reset_form {
+    padding-top: 3rem;
+  }
+  .statement_sec {
+    padding-bottom: 3rem;
+    h1 {
+      text-align: center;
+      padding: 3rem 0 2rem 0;
+      font-size: 2rem;
+      font-weight: 200;
+      color: $text;
+    }
+    span {
+      color: $ternary;
+    }
+    .statement {
+      padding-top: 1rem;
+      width: 70%;
+      .card {
+        background-color: white;
+        box-shadow: 0 0 0 2px #f7f5f5;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 7px;
+        h2 {
+          font-weight: 200;
+        }
+      }
+      .text {
+        padding: 1rem 0;
+        font-size: 2rem;
+        font-weight: 400;
+        color: $text;
+      }
+    }
+  }
+  .filter {
+    .btn_reset {
+      text-align: center;
+      .btn {
+        padding: 0.4rem 1rem;
+      }
+    }
+    .form {
+      margin: 1rem 0;
+      padding: 0.5rem 1.5rem;
+      h2 {
+        padding-bottom: 0;
+        font-size: 1rem;
+        font-weight: 400;
+      }
+      input {
+        padding: 0.2rem;
+      }
+      .btn {
+        padding: 0.4rem 1rem;
+      }
+    }
+  }
+  .detail {
+    h1 {
+      text-align: center;
+      padding: 3rem 0 3rem 0;
+      font-size: 2rem;
+      font-weight: 500;
+      color: $text;
+    }
+    &_content {
+      background-color: white;
+      box-shadow: 0 0 0 2px #f3f1f1;
+      border-radius: 7px;
+      padding: 2rem;
+      margin: 0 auto;
+      max-width: 30rem;
+      text-align: center;
+      h2 {
+        padding: 0.3rem;
+        font-size: 1.6rem;
+        font-weight: 200;
+        text-transform: capitalize;
+      }
+      div {
+        padding-top: 1rem;
+      }
+    }
+  }
+  .padding {
+    padding-top: 3rem;
+  }
 }
 
 .btn_top {
@@ -191,5 +339,13 @@ body {
   &_ter {
     background-color: red;
     color: aliceblue;
+  }
+  &_delete {
+    background-color: #e01717;
+    color: $pure;
+    margin-top: 0.5rem;
+    &:hover {
+      background-color: #c01111;
+    }
   }
 }
