@@ -1,16 +1,30 @@
-<% include partials/header %>
+<% include partials/header %> <% if(error){ %>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"
+    >&times;</span
+  >
+  <%= error %>
+</div>
+<% } %> <% if(success){ %>
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"
+    >&times;</span
+  >
+  <%= success %>
+</div>
+<% } %> <% if(info){ %>
+<div class="alert_1">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"
+    >&times;</span
+  >
+  <%= info %>
+</div>
+<% } %>
 
 <main>
   <div class="container">
     <div class="form">
       <h2>Login</h2>
-      <% if(error){ %>
-      <p class="text_error"><%= error %></p>
-      <% } %> <% if(success) { %>
-      <p class="text_success"><%= success %></p>
-      <% } %> <% if(info) { %>
-      <p class="text_success"><%= info %></p>
-      <% } %>
       <div class="oAuth-container">
         <div>
           <a class="oAuth-btn oAuth-btn-google" href="/auth/google">

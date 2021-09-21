@@ -212,16 +212,17 @@ router.get('/login/resetpassword/verify', (req, res, next) => {
 
 //process verification code
 router.post('/login/resetpassword/verify', (req, res, next) => {
+  console.log(req.body, 'verify');
   let email = req.session.email;
   let { passcode } = req.body;
   User.findOne({ email }, (err, user) => {
-    console.log(user);
+    console.log(passcode, code, 'codes');
     if (err) return next(err);
     if (passcode == code) {
       return res.redirect('/users/login/resetpassword');
     } else {
       req.flash('error', 'Invalid verification code');
-      return res.redirect('/users/login/resetpassword/verify');
+      res.redirect('/users/login/resetpassword/verify');
     }
   });
 });
@@ -234,13 +235,14 @@ router.get('/login/resetpassword', (req, res, next) => {
 
 //reset password
 router.post('/login/resetpassword', (req, res, next) => {
-  console.log(req.body);
+  console.log(req.body, 'reset');
   let { newPasswd1, newPasswd2 } = req.body;
   let email = req.session.email;
   if (newPasswd1 === newPasswd2) {
     User.findOne({ email }, (err, user) => {
       if (err) return next(user);
       bcrypt.hash(newPasswd1, 10, (err, hashed) => {
+        console.log(hashed, 'hashed');
         if (err) return next(err);
         req.body.password = hashed;
         User.findOneAndUpdate({ email }, req.body, (err, user) => {
