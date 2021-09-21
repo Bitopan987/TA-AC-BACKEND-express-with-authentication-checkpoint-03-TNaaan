@@ -19,8 +19,9 @@ router.get('/:id/edit', (req, res, next) => {
   let id = req.params.id;
   Expense.findById(id, (err, expense) => {
     if (err) return next(err);
+    let date = moment(expense.date).format('YYYY-MM-DD');
     expense.category = expense.category.join(' ');
-    res.render('expenseEditPage', { expense });
+    res.render('expenseEditPage', { expense, date });
   });
 });
 //edit expense

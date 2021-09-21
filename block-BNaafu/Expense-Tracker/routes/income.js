@@ -21,8 +21,9 @@ router.get('/:id/edit', (req, res, next) => {
   let id = req.params.id;
   Income.findById(id, (err, income) => {
     if (err) return next(err);
+    let date = moment(income.date).format('YYYY-MM-DD');
     income.sources = income.sources.join(' ');
-    res.render('incomeEditPage', { income });
+    res.render('incomeEditPage', { income, date });
   });
 });
 

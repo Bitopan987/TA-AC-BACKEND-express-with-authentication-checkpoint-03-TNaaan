@@ -357,9 +357,10 @@ body .detail_content {
 
 body .detail_content h2 {
   padding: 0.3rem;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 200;
   text-transform: capitalize;
+  color: #5c5a5a;
 }
 
 body .detail_content div {
@@ -437,5 +438,41 @@ body .padding {
 
 .btn_delete:hover {
   background-color: #c01111;
+}
+
+.alert {
+  padding: 20px;
+  background-color: rgba(231, 130, 130, 0.781);
+  /* Red */
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.alert_1 {
+  padding: 20px;
+  background-color: rgba(83, 150, 83, 0.911);
+  /* Red */
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */
